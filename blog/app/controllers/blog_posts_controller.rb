@@ -8,5 +8,9 @@ class BlogPostsController < ApplicationController
         redirect_to root_path
     end
     def new
+        @blog_post = BlogPosts.new
+    end
+    def create
+        @blog_post = BlogPosts.new(params[])
     end
 end
