@@ -11,6 +11,6 @@ class BlogPostsController < ApplicationController
         @blog_post = BlogPosts.new
     end
     def create
-        @blog_post = BlogPosts.new(params[])
     end
+    
 end
