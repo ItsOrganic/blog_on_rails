@@ -1,25 +1,2 @@
-<h1> Edit the Blog </h1>
-<%= form_with model: @blog_post, url: blog_posts_path, method: :get do |form| %>
-  <% if @blog_post.errors.any? %>
-    <div>
-      <% @blog_post.errors.full_messages.each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
-  <% end %>
-
-  <!-- Your form fields for title and body go here -->
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<h1>Edit Blog Post</h1>
+<%= render "form" %>
