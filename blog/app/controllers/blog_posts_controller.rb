@@ -1,11 +1,13 @@
 # app/controllers/blog_posts_controller.rb
 
 class BlogPostsController < ApplicationController
+before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
+
     def index
         @blog_posts = BlogPosts.all()
     end
     def show
-            @blog_post = BlogPosts.find(params[:id])
+            # @blog_post = BlogPosts.find(params[:id])
         rescue ActiveRecord::RecordNotFound
             redirect_to root_path
     end
@@ -14,7 +16,7 @@ class BlogPostsController < ApplicationController
       @blog_post = BlogPosts.new
     end
     def edit
-        @blog_post = BlogPosts.find(params[:id])
+        # @blog_post = BlogPosts.find(params[:id])
     end
   
     def create
@@ -32,7 +34,7 @@ class BlogPostsController < ApplicationController
       end
     end
     def update
-    @blog_post = BlogPosts.find(params[:id])
+    # @blog_post = BlogPosts.find(params[:id])
     if @blog_post.update(blog_post_params)
       redirect_to @blog_post
     else
@@ -40,9 +42,13 @@ class BlogPostsController < ApplicationController
     end
     end
     def destroy
-    @blog_post = BlogPosts.find(params[:id])
+    
     @blog_post.destroy
     redirect_to root_path
+    end
+
+    def set_blog_find
+      @blog_post = BlogPosts.find(params[:id])
     end
   
     private
