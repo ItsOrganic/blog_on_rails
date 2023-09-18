@@ -49,6 +49,8 @@ before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
 
     def set_blog_find
       @blog_post = BlogPosts.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_path
     end
   
     private
