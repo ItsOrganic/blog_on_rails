@@ -9,8 +9,6 @@ class BlogPostsController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             redirect_to root_path
     end
-
-
     def new
       # Create a new instance of BlogPosts
       @blog_post = BlogPosts.new
@@ -41,6 +39,11 @@ class BlogPostsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
     end
+    def destroy
+    @blog_post = BlogPosts.find(params[:id])
+    @blog_post.destroy
+    redirect_to root_path
+    end
   
     private
   
@@ -49,6 +52,5 @@ class BlogPostsController < ApplicationController
       params.require(:blog_posts).permit(:title, :body)
     end
 
-    
   end
   
