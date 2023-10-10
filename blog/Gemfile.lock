@@ -95,6 +95,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    foreman (0.87.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -199,6 +200,8 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
+    tailwindcss-rails (2.0.30-x64-mingw-ucrt)
+      railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -236,6 +239,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  foreman (~> 0.87.2)
   importmap-rails
   jbuilder
   puma (~> 5.0)
@@ -244,6 +248,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

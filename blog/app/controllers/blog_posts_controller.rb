@@ -2,6 +2,7 @@
 
 class BlogPostsController < ApplicationController
 before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
+before_action :authenticate_user!,except:[:index, :show]
 
     def index
         @blog_posts = BlogPosts.all()
@@ -13,6 +14,7 @@ before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
     end
     def new
       # Create a new instance of BlogPosts
+     
       @blog_post = BlogPosts.new
     end
     def edit
@@ -56,9 +58,14 @@ before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
     private
   
     def blog_post_params
-      # Define the parameters allowed for creating a new blog post
+      
       params.require(:blog_posts).permit(:title, :body)
     end
 
-  end
+    def authenticate_user
+      redirect_to new_user_session_path,alert:"You must either sign_in or sign_up" unless user_signed_in?       
+      end
+    end
+
+
   
