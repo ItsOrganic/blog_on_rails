@@ -5,7 +5,7 @@ before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
 before_action :authenticate_user!,except:[:index, :show]
 
     def index
-        @blog_posts = BlogPosts.published
+        @blog_posts = BlogPosts.published()
     end
     def show
             # @blog_post = BlogPosts.find(params[:id])
