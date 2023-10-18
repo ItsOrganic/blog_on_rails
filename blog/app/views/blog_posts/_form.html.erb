@@ -11,4 +11,8 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <div>
+  <%= form.label :published_at %>
+  <%= form.datetime_select :published_at, include_blank: true %>
+  </div>
 <% end %>
