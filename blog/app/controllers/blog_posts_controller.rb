@@ -43,8 +43,7 @@ before_action :authenticate_user!,except:[:index, :show]
       render :edit, status: :unprocessable_entity
     end
     end
-    def destroy
-    
+    def destroy 
     @blog_post.destroy
     redirect_to root_path
     end
