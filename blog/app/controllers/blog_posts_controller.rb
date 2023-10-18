@@ -5,7 +5,7 @@ before_action :set_blog_find,only:[:show, :edit, :update, :destroy]
 before_action :authenticate_user!,except:[:index, :show]
 
     def index
-        @blog_posts = BlogPosts.all()
+        @blog_posts = user_signed_in? ? BlogPosts.all : BlogPosts.published
     end
     def show
             # @blog_post = BlogPosts.find(params[:id])
@@ -50,16 +50,19 @@ before_action :authenticate_user!,except:[:index, :show]
     end
 
     def set_blog_find
+      if user_signed_in?
       @blog_post = BlogPosts.find(params[:id])
+      else
+        @blog_post = BlogPosts.published.find(params[:id])
+      end
       rescue ActiveRecord::RecordNotFound
         redirect_to root_path
     end
   
     private
   
-    def blog_post_params
-      
-      params.require(:blog_posts).permit(:title, :body)
+    def blog_post_params     
+      params.require(:blog_posts).permit(:title, :body, :published_at)
     end
 
     def authenticate_user
